@@ -1,0 +1,14 @@
+type Posts @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  content: String
+  publish_date: AWSDate
+  authorsID: ID! @index(name: "byAuthors")
+}
+
+type Authors @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  first_name: String
+  last_name: String
+  Posts: [Posts] @hasMany(indexName: "byAuthors", fields: ["id"])
+}

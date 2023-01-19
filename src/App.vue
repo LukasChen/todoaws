@@ -1,22 +1,55 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import HelloWorld from './components/HelloWorld.vue'
+import { ref, onMounted } from 'vue';
+import type { Ref } from 'vue';
 
-const sup = ref("cool beans");
+// @ts-ignore
+import { DataStore } from '@aws-amplify/datastore';
+import { Authors, LazyAuthors } from './models';
+
+let authors : Ref<LazyAuthors[]> = ref([]);
+
+async function createAuthor() {
+  await DataStore.save(
+    new Authors({
+      "first_name": "Sigma",
+      "last_name": "Gay",
+      "Posts": [],
+    })
+  );
+  queryAuthors();
+}
+
+async function queryAuthors() {
+  const models = await DataStore.query(Authors);
+  authors.value = models;
+  console.log(models);
+}
+
+async function deleteAuthor(id: string) {
+  const modelToDelete = await DataStore.query(Authors, id);
+  if (modelToDelete !== undefined) {
+    DataStore.delete(modelToDelete);
+  }
+  queryAuthors();
+}
+
+onMounted(() => {
+  queryAuthors();
+});
 </script>
 
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <h3>Hello World</h3>
+  <button class="btn" @click="createAuthor">Create Author</button>
+  <button class="btn btn-success" @click="queryAuthors">Fetch Authors</button>
+  <ul>
+    <li v-for="author in authors" :key="author.id">
+      {{ author.first_name }} {{ author.last_name }} 
+      <button class="btn btn-danger" @click="deleteAuthor(author.id)">Delete</button>
+    </li>
+  </ul>
   </div>
-  <HelloWorld msg="Vite + Vue" />
-  {{sup}}
-  <button @click="sup += 'more sup'">More Sup!</button>
 </template>
 
 <style scoped>

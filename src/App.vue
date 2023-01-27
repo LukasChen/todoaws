@@ -2,6 +2,8 @@
 import { ref, onMounted } from 'vue';
 import type { Ref } from 'vue';
 
+import HelloWorld from './components/HelloWorld.vue'
+
 // @ts-ignore
 import { DataStore } from '@aws-amplify/datastore';
 import { Authors, LazyAuthors } from './models';
@@ -53,6 +55,7 @@ onMounted(() => {
     </ul>
     <input class="form-control" v-model="firstName" />
     <input class="form-control" v-model="lastName" />
+    <HelloWorld msg="cunt" />
   </div>
 </template>
 

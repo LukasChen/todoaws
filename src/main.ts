@@ -1,5 +1,5 @@
-import { createApp } from 'vue'
-import './style.css'
+import { createApp } from 'vue';
+import './style.css';
 import App from './App.vue';
 
 import { Amplify } from 'aws-amplify';
@@ -8,4 +8,4 @@ import awsConfig from './aws-exports';
 
 Amplify.configure(awsConfig);
 
-createApp(App).mount('#app')
+createApp(App).mount('#app');

@@ -10,6 +10,14 @@
       "StackName": "amplify-todoaws-dev-112302",
       "StackId": "arn:aws:cloudformation:ap-northeast-1:643099856727:stack/amplify-todoaws-dev-112302/6e376170-96df-11ed-8c42-063417d5bc69",
       "AmplifyAppId": "d5xljd4cg8tq7"
+    },
+    "categories": {
+      "auth": {
+        "todoaws70bd71dc": {}
+      },
+      "api": {
+        "todoaws": {}
+      }
     }
   }
 }

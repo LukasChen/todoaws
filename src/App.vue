@@ -4,8 +4,8 @@ import Login from './components/Login.vue';
 
 <template>
   <div class="container mt-5">
-    <!-- <Login /> -->
-  <router-view></router-view>
+    <Login />
+    <router-view></router-view>
   </div>
 </template>
 

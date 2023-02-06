@@ -19,7 +19,7 @@ async function signUp() {
 }
 
 async function confirmSignup() {
-  if(!username || !code) return;
+  if (!username || !code) return;
   await auth.confirmSignup(username, code);
   await auth.login(username, password);
   router.push('/albums');
@@ -41,9 +41,15 @@ async function confirmSignup() {
         <div class="form-group col mb-4">
           <label for="password" class="form-label">Password</label>
           <input type="password" class="form-control shadow-sm" v-model="password" id="password" />
-        </div> 
+        </div>
       </div>
-      <button class="btn btn-primary">Sign up</button>
+      <button class="btn btn-outline-primary">Sign up</button>
     </form>
+    <div class="text-center" v-if="confirmPassword">
+      <h3 class="mb-5">Please confirm your email</h3>
+      <label class="form-label">Code</label>
+      <input class="form-control shadow-sm mb-2" v-model="code" type="text" />
+      <button class="btn btn-primary" @click="confirmSignup">Confirm Code</button>
+    </div>
   </div>
 </template>

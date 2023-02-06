@@ -6,4 +6,9 @@ export default defineConfig({
   plugins: [vue({
     reactivityTransform: true
   })],
+  resolve: {
+    alias: {
+      './runtimeConfig': './runtimeConfig.browser'
+    }
+  }
 })

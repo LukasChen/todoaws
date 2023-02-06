@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { Ref } from 'vue';
 
 import { useAuthStore } from '../store/auth';
 
-let username: Ref<string> = ref("");
-let password: Ref<string> = ref("");
-let email: Ref<string> = ref("");
-let error: Ref<any> = ref("");
+let username: string = $ref("");
+let password: string = $ref("");
+let email: string = $ref("");
+let error: any = $ref("");
 
-const auth = useAuthStore()
+const auth = useAuthStore();
 
 async function login() {
   try {
-    await auth.login(username.value, password.value);
+    await auth.login(username, password);
   } catch (err: any) {
     error = err;
   }

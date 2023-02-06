@@ -1,9 +1,9 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import './style.css';
+import './style.scss';
 
 import { router } from './router';
-//@ts-ignore
+
 import App from './App.vue';
 
 import { Amplify } from 'aws-amplify';

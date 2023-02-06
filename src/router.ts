@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { Auth } from 'aws-amplify';
 
 import Home from './views/Home.vue';
 import SignUpPage from './views/SignUpPage.vue';
@@ -27,7 +28,20 @@ const routes: RouteRecordRaw[] = [
   }
 ];
 
-export const router = createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes
 });
+
+router.beforeEach(async (to, _, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  const isAuthenticated = await Auth.currentUserInfo();
+
+  if(requiresAuth && !isAuthenticated) {
+    next("/");
+  } else {
+    next();
+  }
+});
+
+export  { router };

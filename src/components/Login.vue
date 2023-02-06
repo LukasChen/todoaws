@@ -12,6 +12,7 @@ const auth = useAuthStore();
 async function login() {
   try {
     await auth.login(username, password);
+    console.log("login successful");
   } catch (err: any) {
     error = err;
   }

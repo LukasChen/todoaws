@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import { Auth } from 'aws-amplify';
 
 export interface IUser {
+  username: string;
 }
 
 export const useAuthStore = defineStore('auth', {
@@ -11,6 +12,7 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     setUser(payload: IUser | null) {
       this.user = payload;
+      console.log(this.user);
     },
     async logout() {
       this.setUser(null);

@@ -1,5 +1,13 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import Nav from './components/Nav.vue';
+import { useAuthStore } from './store/auth';
+
+const { authAction } = useAuthStore();
+
+onMounted(() => {
+  authAction();
+})
 </script>
 
 <template>

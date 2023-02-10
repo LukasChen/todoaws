@@ -43,7 +43,7 @@ async function confirmSignup() {
           <input type="password" class="form-control shadow-sm" v-model="password" id="password" />
         </div>
       </div>
-      <button class="btn btn-outline-primary">Sign up</button>
+      <button type="submit" class="btn btn-outline-primary">Sign up</button>
     </form>
     <div class="text-center" v-if="confirmPassword">
       <h3 class="mb-5">Please confirm your email</h3>

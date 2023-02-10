@@ -15,8 +15,11 @@
       "auth": {
         "todoaws70bd71dc": {}
       },
+      "storage": {
+        "AmplifyPhotoStorage": {}
+      },
       "api": {
-        "todoaws": {}
+        "PhotoApi": {}
       }
     }
   }

@@ -4,9 +4,11 @@ import { schema } from './schema';
 
 
 
-const { Posts, Authors } = initSchema(schema);
+const { Album, Photo, S3Object, GPS } = initSchema(schema);
 
 export {
-  Posts,
-  Authors
+  Album,
+  Photo,
+  S3Object,
+  GPS
 };

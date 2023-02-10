@@ -4,17 +4,21 @@ import { useAuthStore } from '../store/auth';
 
 let username: string = $ref("");
 let password: string = $ref("");
-let email: string = $ref("");
-let error: any = $ref("");
+let error: any = $ref();
+
+let isLoading: boolean = $ref(false);
 
 const auth = useAuthStore();
 
 async function login() {
   try {
+    isLoading = true;
     await auth.login(username, password);
+    isLoading = false;
     console.log("login successful");
   } catch (err: any) {
     error = err;
+    console.error(err);
   }
 }
 </script>
@@ -29,9 +33,12 @@ async function login() {
       <label for="username">Password</label>
       <input class="form-control shadow-sm rounded" type="password" v-model="password" />
     </div>
-    <button class="btn btn-primary">Sign in</button>
+    <button type="submit" :class="{'disabled': isLoading}" class="btn btn-primary">
+      <span v-if="!isLoading">Sign in</span>
+      <span v-if="isLoading">Loading...</span>
+    </button>
   </form>
-  <p class="text-error">{{ error.messages }}</p>
+  <p class="text-error">{{ error }}</p>
 </template>
 
 <style lang="scss" scoped>

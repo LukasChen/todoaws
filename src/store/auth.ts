@@ -40,6 +40,7 @@ export const useAuthStore = defineStore('auth', {
         return Promise.resolve();
       } catch (err) {
         console.error(err);
+        console.log(typeof(err));
         return Promise.reject(err);
       }
     },

@@ -1,7 +1,15 @@
 {
   "api": {
-    "todoaws": {
-      "dependsOn": [],
+    "PhotoApi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "todoaws70bd71dc"
+        }
+      ],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [
@@ -10,11 +18,10 @@
             }
           ],
           "defaultAuthentication": {
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "api key description"
-            },
-            "authenticationType": "API_KEY"
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authtodoaws70bd71dc"
+            }
           }
         }
       },
@@ -46,6 +53,13 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    }
+  },
+  "storage": {
+    "AmplifyPhotoStorage": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     }
   }
 }

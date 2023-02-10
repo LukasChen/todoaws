@@ -1,9 +1,8 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "todoaws": {
+    "PhotoApi": {
       "GraphQLAPIEndpointOutput": "string",
-      "GraphQLAPIIdOutput": "string",
-      "GraphQLAPIKeyOutput": "string"
+      "GraphQLAPIIdOutput": "string"
     }
   },
   "auth": {
@@ -15,6 +14,12 @@ export type AmplifyDependentResourcesAttributes = {
       "UserPoolArn": "string",
       "UserPoolId": "string",
       "UserPoolName": "string"
+    }
+  },
+  "storage": {
+    "AmplifyPhotoStorage": {
+      "BucketName": "string",
+      "Region": "string"
     }
   }
 }
